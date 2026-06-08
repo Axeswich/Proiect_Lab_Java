@@ -1,17 +1,32 @@
 package org.example;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.*;
+import java.io.FileWriter;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    static void main() {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
+    static void main() throws FileNotFoundException {
+        File fiser = new File("judete.txt");
+        Scanner scan = new Scanner(fiser);
+        List<Judet> judete = new ArrayList<>();
+        int i=0;
+        while(scan.hasNextLine()){
+            String line = scan.nextLine();
+            String[] split = line.split(" ");
+            judete.get(i).ISO = split[0];
+            judete.get(i).judet = split[1];
+            judete.get(i).Regiunea = split[2];
+            judete.get(i).nrLocuitori = split[3];
+            judete.get(i).suprafata = split[4];
+            i++;
+            }
+            judete.sort(Comparator.comparing(judete.nrLocuitori));
+            File out = new File("output.txt");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + i);
         }
+
+
+
+        }
+
     }
-}
